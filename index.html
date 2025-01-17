@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<html><head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
-		<title>Scouting PASS</title>
+		<title>Scouting PASS 2025</title>
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 		<script src="resources/js/easy.qrcode.min.js"></script>
@@ -16,67 +14,93 @@
 	<body>
 		<form id="scoutingForm" onsubmit="return false" name="scoutingForm">
 			<div id="main-panel-holder">
-				<div id="prematch" class="main-panel" style="background-color: black;">
-					<h1 id="prematchHeader1" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">N</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
+				<div id="prematch" class="main-panel" style="background-color: black; display: none;">
+					<h1 id="prematchHeader1" class="page_title">6357 Reefscape 🪸</h1>
 					<h2 id="prematchHeader2">pre-match</h2>
 					<p class="match-label"><input type="button" value="Next" id="nextButton1" onclick="swipePage(1)"></p>
 					<table id="prematch_table" style="font: Roboto">
 					<!-- ###PRE-MATCH-COMPONENTS###-->
-					</table>
+					<tbody><tr><td class="title">Scouter Initials&nbsp;</td><td class="field"><input id="input_s" type="text" name="s" size="5" maxlength="5" required=""></td></tr><tr><td class="title">Event&nbsp;</td><td class="field"><input id="input_e" type="text" name="e" value="2024txcmp1" required=""><input id="default_e" type="hidden" value="2024txcmp1"></td></tr><tr><td class="title">Match Level&nbsp;</td><td class="field" onchange="updateMatchStart(event)"><input id="input_l_qm" type="radio" name="l" value="qm" checked="">Quals<br><input id="input_l_sf" type="radio" name="l" value="sf">Semifinals<br><input id="input_l_f" type="radio" name="l" value="f">Finals<input id="display_l" hidden="" value=""><input id="default_l" type="hidden" value="qm"></td></tr><tr><td class="title">Match #&nbsp;</td><td class="field"><input id="input_m" type="number" name="m" onchange="updateMatchStart(event)" min="1" max="150" required=""></td></tr><tr><td class="title">Robot&nbsp;</td><td class="field" onchange="updateMatchStart(event)"><input id="input_r_r1" type="radio" name="r" value="r1">Red-1<input id="input_r_b1" type="radio" name="r" value="b1">Blue-1<br><input id="input_r_r2" type="radio" name="r" value="r2">Red-2<input id="input_r_b2" type="radio" name="r" value="b2">Blue-2<br><input id="input_r_r3" type="radio" name="r" value="r3">Red-3<input id="input_r_b3" type="radio" name="r" value="b3">Blue-3<input id="display_r" hidden="" value=""></td></tr><tr><td class="title">Team #&nbsp;</td><td class="field"><input id="input_t" type="number" name="t" onchange="updateMatchStart(event)" min="1" max="99999"></td></tr><tr><td id="teamname-label" colspan="2" style="text-align: center;"></td></tr><tr><td colspan="2" style="text-align: center;" class="title">Auto Start Position</td></tr><tr><td colspan="2" style="text-align: center;"><input type="button" onclick="undo(this.parentElement)" value="Undo" id="undo_as" class="undoButton"><input type="button" onclick="flip(this.parentElement)" value="Flip Image" id="flip_as" class="flipButton" margin-left="8px"></td></tr><tr><td colspan="2" style="text-align: center;"><canvas onclick="onFieldClick(event)" class="field-image-src" id="canvas_as">No canvas support</canvas></td></tr><tr style="display:none"><td colspan="2"><input type="hidden" id="XY_as" value="[&quot;145,21&quot;]"><input hidden="" name="as" id="input_as" value="[]" class="clickableImage"><input hidden="" id="clickRestriction_as" value="one"><input hidden="" id="allowableResponses_as" value="6,7,18,19,30,31,42,43,54,55,66,67"><input hidden="" id="dimensions_as" value="12 6"><input hidden="" id="shape_as" value="circle 5 black red true"><input hidden="" id="toggleClick_as" value="false"></td></tr><tr style="display:none"><td colspan="2"><img src="2024/realreal2025field.png" id="img_as" class="field-image-src" onload="drawFields()" hidden=""></td></tr></tbody></table>
 					<p class="match-label"><input type="button" value="Next" id="nextButton2" onclick="swipePage(1)"></p>
 				</div>
 
-				<div id="auton" class="main-panel" style="background-color: rgb(16, 187, 206);">
-					<h1 id="autonHeader1" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">n</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
+				<div id="auton" class="main-panel" style="background-color: rgb(16, 187, 206); display: table;">
+					<h1 id="autonHeader1" class="page_title">6357 Reefscape 🪸</h1>
 					<h2 id="autonHeader2">Autonamous</h2>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton1" onclick="swipePage(-1)"><input type="button" value="Next" id="nextButton3" onclick="swipePage(1)"></p>
 					<table id="auton_table">
 					<!-- ###AUTON-COMPONENTS###-->
-					</table>
+					<tbody>
+    <tr>
+        <td class="title">Leave Starting Zone&nbsp;</td>
+        <td class="field"><input id="input_al" type="checkbox" name="al">(checked = Yes)</td>
+        <td class="title">Coral Scores in trough&nbsp;</td>
+        <td class="field">
+            <input type="button" id="minus_aco" onclick="counter(this.parentElement, -1)" value="-">
+            <input class="counter" id="input_aco" type="text" name="aco" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2">
+            <input type="button" id="plus_aco" onclick="counter(this.parentElement, 1)" value="+">
+        </td>
+        <td class="title">Coral Scores level 2&nbsp;</td>
+        <td class="field">
+            <input type="button" id="minus_act" onclick="counter(this.parentElement, -1)" value="-">
+            <input class="counter" id="input_act" type="text" name="act" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2">
+            <input type="button" id="plus_act" onclick="counter(this.parentElement, 1)" value="+">
+        </td><td class="title">Coral scores level 3&nbsp;</td>
+        <td class="field"><input type="button" id="minus_acs" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_acs" type="text" name="acs" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_acs" onclick="counter(this.parentElement, 1)" value="+"></td>
+    
+    </tr>
+    
+    
+    
+    
+    <tr>
+        
+<td class="title">Coral scores level 4&nbsp;</td><td class="field"><input type="button" id="minus_acf" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_acf" type="text" name="acf" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_acf" onclick="counter(this.parentElement, 1)" value="+"></td>
+<td class="title">Processor Scores&nbsp;</td><td class="field"><input type="button" id="minus_aps" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_aps" type="text" name="aps" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_aps" onclick="counter(this.parentElement, 1)" value="+"></td><td class="title">Net Scores&nbsp;</td><td class="field"><input type="button" id="minus_ane" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_ane" type="text" name="ane" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_ane" onclick="counter(this.parentElement, 1)" value="+"></td><td class="title">Pickup From&nbsp;</td><td class="field"><input id="input_apf_station" type="radio" name="apf" value="station">Station<br><input id="input_apf_floor" type="radio" name="apf" value="floor">Floor<br><input id="input_apf_both" type="radio" name="apf" value="both">Both<br><input id="input_apf_na" type="radio" name="apf" value="na" checked="">Not Attempted<input id="display_apf" hidden="" value=""><input id="default_apf" type="hidden" value="na"></td></tr><tr></tr></tbody></table>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton2" onclick="swipePage(-1)"> <input type="button" value="Next" id="nextButton4" onclick="swipePage(1)"></p>
 				</div>
 
-				<div id="teleop" class="main-panel" style="background-color: rgb(204, 153, 255);">
-					<h1 id="teleopHeader1" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">n</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
-					<h2 id="teleopHeader2" >Teleop</h2>
+				<div id="teleop" class="main-panel" style="background-color: rgb(204, 153, 255); display: none;">
+					<h1 id="teleopHeader1" class="page_title">6357 Reefscape 🪸</h1>
+					<h2 id="teleopHeader2">Teleop</h2>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton3" onclick="swipePage(-1)"><input type="button" value="Next" id="nextButton5" onclick="swipePage(1)"></p>
 					<table id="teleop_table">
 						<!-- ###TELEOP-COMPONENTS###-->
-					</table>
+					<tbody><tr><td class="title">Coral Scores in trough&nbsp;</td><td class="field"><input type="button" id="minus_csu" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_csu" type="text" name="csu" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_csu" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Coral Scores level 2&nbsp;</td><td class="field"><input type="button" id="minus_cos" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_cos" type="text" name="cos" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_cos" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Coral scores level 3&nbsp;</td><td class="field"><input type="button" id="minus_cst" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_cst" type="text" name="cst" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_cst" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Coral scores level 4&nbsp;</td><td class="field"><input type="button" id="minus_scf" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_scf" type="text" name="scf" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_scf" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Processor Scores&nbsp;</td><td class="field"><input type="button" id="minus_pro" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_pro" type="text" name="pro" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_pro" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Net Scores&nbsp;</td><td class="field"><input type="button" id="minus_net" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_net" type="text" name="net" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_net" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Algae removed&nbsp;</td><td class="field"><input type="button" id="minus_are" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_are" type="text" name="are" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_are" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Pickup From&nbsp;</td><td class="field"><input id="input_tpf_station" type="radio" name="tpf" value="station">Station<br><input id="input_tpf_floor" type="radio" name="tpf" value="floor">Floor<br><input id="input_tpf_both" type="radio" name="tpf" value="both">Both<br><input id="input_tpf_na" type="radio" name="tpf" value="na" checked="">Not Attempted<input id="display_tpf" hidden="" value=""><input id="default_tpf" type="hidden" value="na"></td></tr><tr><td class="title">Missed Algae&nbsp;</td><td class="field"><input type="button" id="minus_mal" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_mal" type="text" name="mal" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_mal" onclick="counter(this.parentElement, 1)" value="+"></td></tr><tr><td class="title">Dropped Algae (&gt;2)&nbsp;</td><td class="field"><input id="input_dra" type="checkbox" name="dra">(checked = Yes)</td></tr><tr><td class="title">Dropped Coral (&gt;2)&nbsp;</td><td class="field"><input id="input_drc" type="checkbox" name="drc">(checked = Yes)</td></tr><tr><td class="title">Fouls&nbsp;</td><td class="field"><input type="button" id="minus_fou" onclick="counter(this.parentElement, -1)" value="-"><input class="counter" id="input_fou" type="text" name="fou" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" id="plus_fou" onclick="counter(this.parentElement, 1)" value="+"></td></tr></tbody></table>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton4" onclick="swipePage(-1)"> <input type="button" value="Next" id="nextButton6" onclick="swipePage(1)"></p>
 				</div>
 
 				<div id="endgame" class="main-panel" style="background-color: rgb(204, 255, 153);">
-					<h1 id="endgameHeader1" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">n</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
+					<h1 id="endgameHeader1" class="page_title">6357 Reefscape 🪸</h1>
 					<h2 id="endgameHeader2">Endgame</h2>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton5" onclick="swipePage(-1)"><input type="button" value="Next" id="nextButton7" onclick="swipePage(1)"></p>
 					<table id="endgame_table">
 						<!-- ###ENDGAME-COMPONENTS###-->
-					</table>
+					<tbody><tr><td class="title">Defense&nbsp;</td><td class="field"><input id="input_def_one" type="radio" name="def" value="one">protected one location<br><input id="input_def_multiple" type="radio" name="def" value="multiple">protected multiple locations<br><input id="input_def_team" type="radio" name="def" value="team">targeted specific team<br><input id="input_def_na" type="radio" name="def" value="na" checked="">Not attempted<input id="display_def" hidden="" value=""><input id="default_def" type="hidden" value="na"></td></tr><tr><td class="title">Defense delayed opponent?&nbsp;</td><td class="field"><input id="input_ide" type="checkbox" name="ide">(checked = Yes)</td></tr><tr><td class="title">Final Status&nbsp;</td><td class="field"><input id="input_fs_parked" type="radio" name="fs" value="parked">Parked<br><input id="input_fs_shallow" type="radio" name="fs" value="shallow">shallow cage<br><input id="input_fs_deep" type="radio" name="fs" value="deep">deep cage<br><input id="input_fs_attempted" type="radio" name="fs" value="attempted">Attempted climb but failed<br><input id="input_fs_na" type="radio" name="fs" value="na" checked="">Not attempted<input id="display_fs" hidden="" value=""><input id="default_fs" type="hidden" value="na"></td></tr></tbody></table>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton6" onclick="swipePage(-1)"> <input type="button" value="Next" id="nextButton8" onclick="swipePage(1)"></p>
 				</div>
 				
 				<div id="post-match" class="main-panel" style="background-color: rgb(199, 140, 140);">
-					<h1 id="postmatchHeader" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">n</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
+					<h1 id="postmatchHeader" class="page_title">6357 Reefscape 🪸</h1>
 					<h2>Extra information</h2>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton7" onclick="swipePage(-1)"><input type="button" value="Next" id="nextButton9" onclick="swipePage(1)"></p>
 					<table id="postmatch_table">
 						<!-- ###POST-MATCH-COMPONENTS###-->
-					</table>
+					<tbody><tr><td class="title">Tippy<br>(almost tipped over)&nbsp;</td><td class="field"><input id="input_tip" type="checkbox" name="tip">(checked = Yes)</td></tr><tr><td class="title">Temporarily Immobilized&nbsp;</td><td class="field"><input id="input_tei" type="checkbox" name="tei">(checked = Yes)</td></tr><tr><td class="title">Permanently Immobilized&nbsp;</td><td class="field"><input id="input_per" type="checkbox" name="per">(checked = Yes)</td></tr></tbody></table>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton8" onclick="swipePage(-1)"> <input type="button" value="Next" id="nextButton10" onclick="swipePage(1)"></p>
 				</div>
 
 				<div id="qr-code" class="main-panel" style="background-color: white;">
-					<h1 id="qrHeader1" class="page_title"><span class="odd">P</span><span class="even">W</span><span class="odd">n</span><span class="even">A</span><span class="odd">G</span><span class="even">E</span><br>Scouting 2020</h1>
+					<h1 id="qrHeader1" class="page_title">6357 Reefscape 🪸</h1>
 					<h2 id="qrHeader2">Generate QR Code</h2>
 					<p class="match-label"><input type="button" value="Prev" id="prevButton9" onclick="swipePage(-1)"></p>
-					<p id="qr-info"><span id="display_qr-info" style="border: none; text-align: center;"></span></p>
-					<table id="qr-table"><tr><td width="5%">&nbsp;</td><td width="90%">
+					<p id="qr-info"><span id="display_qr-info" style="border: none; text-align: center;">Event: 2024txcmp1 Match: 87 Robot:  Team: 878</span></p>
+					<table id="qr-table"><tbody><tr><td width="5%">&nbsp;</td><td width="90%">
 						<div id="qrcode" style="text-align:center">
 							<script>
 						// Create QRCode Object
 								qr = new QRCode(document.getElementById("qrcode"), options)
-					</script>
+					</script><canvas width="289" height="289"></canvas>
 					</div>
 				</td><td width="5%">&nbsp;</td></tr>
 				<tr><td width="5%">&nbsp;</td><td width="90%">
@@ -84,13 +108,11 @@
 						<p id="data" style="text-align:center"></p>
 					</div>
 				</td><td width="5%">&nbsp;</td></tr>
-			</table>
+			</tbody></table>
 					<p></p>
-					<p class="match-label"><input type="button" 
-		value="Display Data" id="displayButton" onclick="displayData()"><input 
-		type="button" value="Copy Data" id="copyButton" onclick="copyData()"></p>
+					<p class="match-label"><input type="button" value="Display Data" id="displayButton" onclick="displayData()"><input type="button" value="Copy Data" id="copyButton" onclick="copyData()"></p>
 					<div id="submitButton">
-						<button id="submit" type="submit" class="submitForm">Send to Google Sheets</button>
+						<button id="submit" type="submit" class="submitForm" style="display: none;">Send to Google Sheets</button>
 					</div>
 					<div id="clearButton">
 						<button type="button" class="clearForm" onclick="clearForm()">Clear Form</button>
@@ -99,5 +121,6 @@
 				</div>
 			</div>
 		</form>
-	</body>
-</html>
+	
+
+</body></html>
