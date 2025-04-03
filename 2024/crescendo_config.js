@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2024txcmp1",
+      "defaultValue": "2025txcmp2",
       "required": "true"
     },
     { "name": "Match Level",
